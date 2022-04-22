@@ -1,4 +1,5 @@
 <?php 
+include_once './classes/DBConnection.class.php';
 
 class Institucional {
     
