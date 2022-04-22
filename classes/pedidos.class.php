@@ -12,7 +12,7 @@ class Pedidos {
     private $dtRecebimento = '';
     private $tipoFrete = '';
     private $rastreioFrete = '';
-    private $entregaendereco = '';
+    private $entregaEndereco = '';
     private $entregaNumero = '';
     private $entregaCompl = '';
     private $entregaBairro = '';
@@ -26,9 +26,8 @@ class Pedidos {
     private $dtDevolucao = '';
     private $motivoDevolucao = '';
     
-    function __construct($idPedido, $idUsuario,  $dtPedido, $dtPagamento, $dtNotaFiscal, $notaFiscal, $dtEnvio, $dtRecebimento, $tipoFrete, $rastreioFrete, $entregaendereco,  $entregaNumero,  $entregaCompl,  $entregaBairro,  $entregaCidade,  $entregaUF, $entregaCEP, $entregaTelefone,  $entregaRefer,  $valorTotal, $qtdItems, $dtDevolucao, $motivoDevolucao) {
+    function __construct($idUsuario,  $dtPedido, $dtPagamento, $dtNotaFiscal, $notaFiscal, $dtEnvio, $dtRecebimento, $tipoFrete, $rastreioFrete, $entregaEndereco,  $entregaNumero,  $entregaCompl,  $entregaBairro,  $entregaCidade,  $entregaUF, $entregaCEP, $entregaTelefone,  $entregaRefer,  $valorTotal, $qtdItems, $dtDevolucao, $motivoDevolucao) {
         
-        $this->setIdPedido($idPedido);
         $this->setIdUsuario($idUsuario);
         $this->setDtPedido($dtPedido);
         $this->setDtPagamento($dtPagamento);
@@ -38,7 +37,7 @@ class Pedidos {
         $this->setDtRecebimento($dtRecebimento);
         $this->setTipoFrete($tipoFrete);
         $this->setRastreioFrete($rastreioFrete);
-        $this->setEntregaendereco($entregaendereco);
+        $this->setEntregaendereco($entregaEndereco);
         $this->setEntregaNumero($entregaNumero);
         $this->setEntregaCompl($entregaCompl);
         $this->setEntregaBairro($entregaBairro);
@@ -53,6 +52,12 @@ class Pedidos {
         $this->setMotivoDevolucao($motivoDevolucao);
     }
 
+    public function save(){
+        $dbConnection = new DBConnection();
+        $dbConnection->getConnection()->query("INSERT INTO usuario (idUsuario, dtPedido, dtPagamento, dtNotaFiscal, notaFiscal, dtEnvio, dtRecebimento, tipoFrete, rastreioFrete, entregaEndereco, entregaNumero, entregaNumero, entregaCompl, entregaBairro, entregaCidade, entregaUF, entregaCEP, entregaTelefone, entregaRefer, valorTotal, qtdItems, dtDevolucao, motivoDevolucao)
+            VALUES ('".$this->getIdUsuario()."', '".$this->getDtPedido()."', '".$this->getDtPagamento()."', '".$this->getDtNotaFiscal()."', '".$this->getNotaFiscal()."', '".$this->getDtEnvio()."', '".$this->getDtRecebimento()."', '".$this->getTipoFrete()."', '".$this->getRastreioFrete()."', '".$this->getEntregaEndereco()."', '".$this->getEntregaNumero()."', '".$this->getEntregaCompl()."', '".$this->getEntregaBairro()."', '".$this->getEntregaCidade()."', '".$this->getEntregaUF()."', '".$this->getEntregaCEP()."', '".$this->getEntregaTelefone()."', '".$this->getEntregaRefer()."', '".$this->getValorTotal()."', '".$this->getQtdItems()."', '".$this->getDtDevolucao()."', '".$this->getMotivoDevolucao()."', )");
+    }
+    
 	public function getIdPedido(){
 		return $this->idPedido;
 	}
@@ -133,12 +138,12 @@ class Pedidos {
 		$this->rastreioFrete = $rastreioFrete;
 	}
 
-	public function getEntregaendereco(){
-		return $this->entregaendereco;
+	public function getEntregaEndereco(){
+		return $this->entregaEndereco;
 	}
 
-	public function setEntregaendereco($entregaendereco){
-		$this->entregaendereco = $entregaendereco;
+	public function setEntregaendereco($entregaEndereco){
+		$this->entregaEndereco = $entregaEndereco;
 	}
 
 	public function getEntregaNumero(){

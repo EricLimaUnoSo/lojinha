@@ -33,6 +33,12 @@ class Estoque {
         $this->setOcorrencia($ocorrencia);
     }
 
+    public function save(){
+        $dbConnection = new DBConnection();
+        $dbConnection->getConnection()->query("INSERT INTO usuario (idEstoque, idProduto, dtEntrada, quantidade, dtFabricacao, dtVencimento, nfCompra, precoCompra, icmsCompra, precoVenda, qtdVendida, qtdOcorrencia, ocorrencia)
+            VALUES ('".$this->getIdEstoque()."', '".$this->getIdProduto()."', '".$this->getDtEntrada()."', '".$this->getQuantidade()."', '".$this->getDtFabricacao()."', '".$this->getDtVencimento()."', '".$this->getNfCompra()."', '".$this->getPrecoCompra()."', '".$this->getIcmsCompra()."', '".$this->getPrecoVenda()."', '".$this->getQtdVendida()."', '".$this->getQtdOcorrencia()."', '".$this->getOcorrencia()."', )");
+    }
+    
 	public function getIdEstoque(){
 		return $this->idEstoque;
 	}

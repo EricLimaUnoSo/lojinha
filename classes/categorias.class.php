@@ -2,23 +2,19 @@
 
 class Categorias {
     
-    private $idCategoria = '';
     private $descricao = '';
     
-    function __construct($idCategoria, $descricao) {
+    function __construct($descricao) {
         
-        $this->setIdCategoria($idCategoria);
         $this->setDescricao($descricao);
     }
 
-	public function getIdCategoria(){
-		return $this->idCategoria;
-	}
-
-	public function setIdCategoria($idCategoria){
-		$this->idCategoria = $idCategoria;
-	}
-
+    public function save(){
+        $dbConnection = new DBConnection();
+        $dbConnection->getConnection()->query("INSERT INTO usuario (descricao)
+            VALUES ('".$this->getDescricao()."')");
+    }
+    
 	public function getDescricao(){
 		return $this->descricao;
 	}

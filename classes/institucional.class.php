@@ -29,6 +29,12 @@ class Institucional {
         $this->setLogo($logo);
     }
 
+    public function save(){
+        $dbConnection = new DBConnection();
+        $dbConnection->getConnection()->query("INSERT INTO usuario (nome, cpf_cnpj, tipoPessoa, endereco, bairro, cidade, uf, cep, telefone, email, logo)
+            VALUES ('".$this->getNome()."', '".$this->getCpf_cnpj()."', '".$this->getTipoPessoa()."', '".$this->getEndereco()."', '".$this->getBairro()."', '".$this->getCidade()."', '".$this->getUf()."', '".$this->getCep()."', '".$this->getTelefone()."', '".$this->getEmail()."', '".$this->getLogo()."')");
+    }
+    
 	public function getNome(){
 		return $this->nome;
 	}

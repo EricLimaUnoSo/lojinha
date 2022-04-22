@@ -2,23 +2,19 @@
 
 class NivelUsuario {
     
-    private $idNivelUsuario = '';
     private $nivel = '';
     
-    function __construct($idNivelUsuario, $nivel) {
+    function __construct($nivel) {
         
-        $this->setIdNivelUsuario($idNivelUsuario);
         $this->setNivel($nivel);
     }
 
-	public function getIdNivelUsuario(){
-		return $this->idNivelUsuario;
-	}
-
-	public function setIdNivelUsuario($idNivelUsuario){
-		$this->idNivelUsuario = $idNivelUsuario;
-	}
-
+    public function save(){
+        $dbConnection = new DBConnection();
+        $dbConnection->getConnection()->query("INSERT INTO usuario (nivel)
+            VALUES ('".$this->getNivel()."')");
+    }
+    
 	public function getNivel(){
 		return $this->nivel;
 	}

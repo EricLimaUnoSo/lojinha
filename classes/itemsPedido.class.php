@@ -2,7 +2,6 @@
 
 class ItemsPedido {
     
-    private $idItemPedido = '';
     private $ordem = '';
     private $idPedido = '';
     private $idEstoque = '';
@@ -10,8 +9,8 @@ class ItemsPedido {
     private $dtDevolucao = '';
     private $motivoDevolucao = '';
     
-    function __construct($idItemPedido, $ordem, $idPedido, $idEstoque, $qtdItem, $dtDevolucao, $motivoDevolucao) {
-        $this->setIdItemPedido($idItemPedido);
+    function __construct($ordem, $idPedido, $idEstoque, $qtdItem, $dtDevolucao, $motivoDevolucao) {
+        
         $this->setOrdem($ordem);
         $this->setIdPedido($idPedido);
         $this->setIdEstoque($idEstoque);
@@ -20,13 +19,12 @@ class ItemsPedido {
         $this->setMotivoDevolucao($motivoDevolucao);
     }
 
-	public function getIdItemPedido(){
-		return $this->idItemPedido;
-	}
-
-	public function setIdItemPedido($idItemPedido){
-		$this->idItemPedido = $idItemPedido;
-	}
+    public function save(){
+        $dbConnection = new DBConnection();
+        $dbConnection->getConnection()->query("INSERT INTO usuario (ordem, idPedido, idEstoque, qtdItem, dtDevolucao, motivoDevolucao)
+            VALUES ('".$this->getOrdem()."', '".$this->getIdPedido()."', '".$this->getIdEstoque()."', '".$this->getQtdItem()."', '".$this->getDtDevolucao()."', '".$this->getMotivoDevolucao()."', )");
+    }
+    
 
 	public function getOrdem(){
 		return $this->ordem;

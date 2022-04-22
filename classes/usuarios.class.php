@@ -35,6 +35,12 @@ class Usuarios {
         $this->setAtivo($ativo);
         ;
     }
+    
+    public function save(){
+        $dbConnection = new DBConnection();
+        $dbConnection->getConnection()->query("INSERT INTO usuario (email, senha, idNivelUsuario, nome, cpf, endereco, bairro, cidade, uf, cep, telefone, foto, ativo)
+            VALUES ('".$this->getEmail()."', '".$this->getSenha()."', '".$this->getIdNivelUsuario()."', '".$this->getNome()."', '".$this->getCpf()."', '".$this->getEndereco()."', '".$this->getBairro()."', '".$this->getCidade()."', '".$this->getUf()."', '".$this->getCep()."', '".$this->getTelefone()."', '".$this->getFoto()."', '".$this->getAtivo()."')");
+    }
 
 	public function getIdUsuario(){
 		return $this->idUsuario;

@@ -34,6 +34,12 @@ class Produtos {
         ;
     }
 
+    public function save(){
+        $dbConnection = new DBConnection();
+        $dbConnection->getConnection()->query("INSERT INTO usuario (idProduto, fabricante, nome, marca, modelo, idCategoria, descricao, unidadeMedida, largura, altura, profundidade, peso, cor)
+            VALUES ('".$this->getIdProduto()."', '".$this->getFabricante()."', '".$this->getNome()."', '".$this->getMarca()."', '".$this->getModelo()."', '".$this->getIdCategoria()."', '".$this->getDescricao()."', '".$this->getUnidadeMedida()."', '".$this->getLargura()."', '".$this->getAltura()."', '".$this->getProfundidade()."', '".$this->getPeso()."', '".$this->getCor()."', )");
+    }
+    
 	public function getIdProduto(){
 		return $this->idProduto;
 	}
