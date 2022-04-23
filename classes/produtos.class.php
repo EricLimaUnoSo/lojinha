@@ -1,9 +1,8 @@
 <?php 
-include_once './classes/DBConnection.class.php';
+include_once '../classes/DBConnection.class.php';
 
 class Produtos {
     
-    private $idProduto = '';
     private $fabricante  = '';
     private $nome = '';
     private $marca = '';
@@ -17,9 +16,8 @@ class Produtos {
     private $peso = '';
     private $cor = '';
     
-    function __construct($idProduto, $fabricante , $nome, $marca, $modelo, $idCategoria, $descricao, $unidadeMedida, $largura, $altura, $profundidade, $peso, $cor) {
+    function __construct($fabricante , $nome, $marca, $modelo, $idCategoria, $descricao, $unidadeMedida, $largura, $altura, $profundidade, $peso, $cor) {
         
-        $this->setIdProduto($idProduto);
         $this->setFabricante($fabricante);
         $this->setNome($nome);
         $this->setMarca($marca);
@@ -37,18 +35,10 @@ class Produtos {
 
     public function save(){
         $dbConnection = new DBConnection();
-        $dbConnection->getConnection()->query("INSERT INTO usuario (idProduto, fabricante, nome, marca, modelo, idCategoria, descricao, unidadeMedida, largura, altura, profundidade, peso, cor)
-            VALUES ('".$this->getIdProduto()."', '".$this->getFabricante()."', '".$this->getNome()."', '".$this->getMarca()."', '".$this->getModelo()."', '".$this->getIdCategoria()."', '".$this->getDescricao()."', '".$this->getUnidadeMedida()."', '".$this->getLargura()."', '".$this->getAltura()."', '".$this->getProfundidade()."', '".$this->getPeso()."', '".$this->getCor()."', )");
+        $dbConnection->getCon()->query("INSERT INTO produtos (fabricante, nome, marca, modelo, idCategoria, descricao, unidadeMedida, largura, altura, profundidade, peso, cor)
+            VALUES ('".$this->getFabricante()."', '".$this->getNome()."', '".$this->getMarca()."', '".$this->getModelo()."', '".$this->getIdCategoria()."', '".$this->getDescricao()."', '".$this->getUnidadeMedida()."', '".$this->getLargura()."', '".$this->getAltura()."', '".$this->getProfundidade()."', '".$this->getPeso()."', '".$this->getCor()."' )");
     }
     
-	public function getIdProduto(){
-		return $this->idProduto;
-	}
-
-	public function setIdProduto($idProduto){
-		$this->idProduto = $idProduto;
-	}
-
 	public function getFabricante(){
 		return $this->fabricante;
 	}

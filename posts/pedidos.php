@@ -1,5 +1,5 @@
 <?php
-include_once './classes/pedidos.class.php';
+include_once '../classes/pedidos.class.php';
 
     $idPedido = $_POST['idPedido']; 
     $idUsuario = $_POST['idUsuario'];
@@ -28,5 +28,5 @@ include_once './classes/pedidos.class.php';
     $pedidos = new Pedidos(
         $idPedido, $idUsuario, $dtPedido, $dtPagamento, $dtNotaFiscal, $notaFiscal, $dtEnvio, $dtRecebimento, $tipoFrete, $rastreioFrete, $entregaEndereco, $entregaNumero, $entregaCompl, $entregaBairro, $entregaCidade, $entregaUF, $entregaCEP, $entregaTelefone, $entregaRefer, $valorTotal, $qtdItems, $dtDevolucao, $motivoDevolucao
         );
-
+    $pedidos->save();
 ?>

@@ -1,11 +1,12 @@
 <?php
-include_once './classes/categorias.class.php';
+include_once '../classes/categorias.class.php';
 
     $descricao = $_POST['descricao'];
 
     
-    $Categorias = new Categorias(
+    $categorias = new Categorias(
         $descricao
         );
+    $categorias->save();
 
 ?>

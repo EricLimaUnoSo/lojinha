@@ -1,5 +1,5 @@
 <?php
-include_once './classes/institucional.class.php';
+include_once '../classes/institucional.class.php';
 
     $nome = $_POST['nome'];
     $cpf_cnpj = $_POST['cpf_cnpj'];
@@ -16,4 +16,5 @@ include_once './classes/institucional.class.php';
     $institucional = new Institucional(
         $nome, $cpf_cnpj, $tipoPessoa, $endereco, $bairro, $cidade, $uf, $cep, $telefone, $email, $logo
         );
+    $institucional->save();
 ?>

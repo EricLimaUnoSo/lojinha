@@ -3,23 +3,24 @@
 class DBConnection {
     
     private $host='';
-    private $nome='';
     private $user='';
     private $password='';
+    private $nome='';
     private $con='';
     
     
-    function __construct() {
+    function __construct() { echo 'qualquer coisa';
         
         $this->setHost('localhost');
+        $this->setUser('root');
+        $this->setPassword('123456');
         $this->setNome('lojinha');
-        $this->setUser('developer');
-        $this->setPassword($password);
-        $this->setCon(mysqli_connect($this->getHost(), $this->getNome(), $this->getUser(), $this->getPassword()));
+        $this->setCon(mysqli_connect($this->getHost(), $this->getUser(),$this->getPassword(), $this->getNome()));
      
-        if (!$this->getCon()) {
-            echo 'ta errado'. mysqli_connect_errno();
-            exit();
+        if ($this->getCon()) {
+            echo 'deu certo';
+        } else {
+            echo 'cagou';
         }
     }
 

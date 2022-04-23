@@ -1,5 +1,5 @@
 <?php
-include_once './classes/estoque.class.php';
+include_once '../classes/estoque.class.php';
 
     $idProduto = $_POST['idProduto'];
     $dtEntrada = $_POST['dtEntrada'];
@@ -15,9 +15,8 @@ include_once './classes/estoque.class.php';
     $ocorrencia = $_POST['ocorrencia'];
     
     $estoque = new Estoque(
-        $idEstoque, $idProduto, $dtEntrada, $quantidade, $dtFabricacao, $dtVencimento, $nfCompra, $precoCompra, $icmsCompra, $precoVenda, $qtdVendida, $qtdOcorrencia, $ocorrencia
+        $idProduto, $dtEntrada, $quantidade, $dtFabricacao, $dtVencimento, $nfCompra, $precoCompra, $icmsCompra, $precoVenda, $qtdVendida, $qtdOcorrencia, $ocorrencia
         );
-    
-    
-
+    $estoque->save();
+   
 ?>

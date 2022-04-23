@@ -1,5 +1,5 @@
 <?php 
-include_once './classes/DBConnection.class.php';
+include_once '../classes/DBConnection.class.php';
 
 class Categorias {
     
@@ -10,11 +10,12 @@ class Categorias {
         $this->setDescricao($descricao);
     }
 
-    public function save(){
+    public function save(){ echo 'asdw';
         $dbConnection = new DBConnection();
-        $dbConnection->getConnection()->query("INSERT INTO usuario (descricao)
+        $dbConnection->getCon()->query("INSERT INTO categorias (descricao)
             VALUES ('".$this->getDescricao()."')");
     }
+    
     
 	public function getDescricao(){
 		return $this->descricao;

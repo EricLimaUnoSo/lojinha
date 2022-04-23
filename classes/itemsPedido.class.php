@@ -1,5 +1,5 @@
 <?php 
-include_once './classes/DBConnection.class.php';
+include_once '../classes/DBConnection.class.php';
 
 class ItemsPedido {
     
@@ -22,8 +22,8 @@ class ItemsPedido {
 
     public function save(){
         $dbConnection = new DBConnection();
-        $dbConnection->getConnection()->query("INSERT INTO usuario (ordem, idPedido, idEstoque, qtdItem, dtDevolucao, motivoDevolucao)
-            VALUES ('".$this->getOrdem()."', '".$this->getIdPedido()."', '".$this->getIdEstoque()."', '".$this->getQtdItem()."', '".$this->getDtDevolucao()."', '".$this->getMotivoDevolucao()."', )");
+        $dbConnection->getCon()->query("INSERT INTO itemspedido (ordem, idPedido, idEstoque, qtdItem, dtDevolucao, motivoDevolucao)
+            VALUES ('".$this->getOrdem()."', '".$this->getIdPedido()."', '".$this->getIdEstoque()."', '".$this->getQtdItem()."', '".$this->getDtDevolucao()."', '".$this->getMotivoDevolucao()."' )");
     }
     
 

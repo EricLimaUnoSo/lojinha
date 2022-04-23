@@ -1,5 +1,5 @@
 <?php
-include_once './classes/itemsPedido.class.php';
+include_once '../classes/itemsPedido.class.php';
 
     $ordem = $_POST['ordem'];
     $idPedido = $_POST['idPedido'];
@@ -11,5 +11,5 @@ include_once './classes/itemsPedido.class.php';
     $itemsPedido = new ItemsPedido(
         $ordem, $idPedido, $idEstoque, $qtdItem, $dtDevolucao, $motivoDevolucao
         );
-    
+    $itemsPedido->save();
 ?>

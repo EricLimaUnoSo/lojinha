@@ -1,5 +1,5 @@
 <?php 
-include_once './classes/DBConnection.class.php';
+include_once '../classes/DBConnection.class.php';
 
 class Pedidos {
     
@@ -55,7 +55,7 @@ class Pedidos {
 
     public function save(){
         $dbConnection = new DBConnection();
-        $dbConnection->getConnection()->query("INSERT INTO usuario (idUsuario, dtPedido, dtPagamento, dtNotaFiscal, notaFiscal, dtEnvio, dtRecebimento, tipoFrete, rastreioFrete, entregaEndereco, entregaNumero, entregaNumero, entregaCompl, entregaBairro, entregaCidade, entregaUF, entregaCEP, entregaTelefone, entregaRefer, valorTotal, qtdItems, dtDevolucao, motivoDevolucao)
+        $dbConnection->getCon()->query("INSERT INTO pedidos (idUsuario, dtPedido, dtPagamento, dtNotaFiscal, notaFiscal, dtEnvio, dtRecebimento, tipoFrete, rastreioFrete, entregaEndereco, entregaNumero, entregaNumero, entregaCompl, entregaBairro, entregaCidade, entregaUF, entregaCEP, entregaTelefone, entregaRefer, valorTotal, qtdItems, dtDevolucao, motivoDevolucao)
             VALUES ('".$this->getIdUsuario()."', '".$this->getDtPedido()."', '".$this->getDtPagamento()."', '".$this->getDtNotaFiscal()."', '".$this->getNotaFiscal()."', '".$this->getDtEnvio()."', '".$this->getDtRecebimento()."', '".$this->getTipoFrete()."', '".$this->getRastreioFrete()."', '".$this->getEntregaEndereco()."', '".$this->getEntregaNumero()."', '".$this->getEntregaCompl()."', '".$this->getEntregaBairro()."', '".$this->getEntregaCidade()."', '".$this->getEntregaUF()."', '".$this->getEntregaCEP()."', '".$this->getEntregaTelefone()."', '".$this->getEntregaRefer()."', '".$this->getValorTotal()."', '".$this->getQtdItems()."', '".$this->getDtDevolucao()."', '".$this->getMotivoDevolucao()."', )");
     }
     

@@ -1,9 +1,8 @@
 <?php 
-include_once './classes/DBConnection.class.php';
+include_once '../classes/DBConnection.class.php';
 
 class Estoque {
     
-    private $idEstoque = '';
     private $idProduto  = '';
     private $dtEntrada = '';
     private $quantidade = '';
@@ -17,9 +16,8 @@ class Estoque {
     private $qtdOcorrencia  = '';
     private $ocorrencia  = '';
     
-    function __construct($idEstoque, $idProduto , $dtEntrada, $quantidade, $dtFabricacao, $dtVencimento, $nfCompra, $precoCompra, $icmsCompra, $precoVenda, $qtdVendida, $qtdOcorrencia, $ocorrencia) {
+    function __construct($idProduto , $dtEntrada, $quantidade, $dtFabricacao, $dtVencimento, $nfCompra, $precoCompra, $icmsCompra, $precoVenda, $qtdVendida, $qtdOcorrencia, $ocorrencia) {
         
-        $this->setIdEstoque($idEstoque);
         $this->setIdProduto($idProduto);
         $this->setDtEntrada($dtEntrada);
         $this->setQuantidade($quantidade);
@@ -36,17 +34,10 @@ class Estoque {
 
     public function save(){
         $dbConnection = new DBConnection();
-        $dbConnection->getConnection()->query("INSERT INTO usuario (idEstoque, idProduto, dtEntrada, quantidade, dtFabricacao, dtVencimento, nfCompra, precoCompra, icmsCompra, precoVenda, qtdVendida, qtdOcorrencia, ocorrencia)
-            VALUES ('".$this->getIdEstoque()."', '".$this->getIdProduto()."', '".$this->getDtEntrada()."', '".$this->getQuantidade()."', '".$this->getDtFabricacao()."', '".$this->getDtVencimento()."', '".$this->getNfCompra()."', '".$this->getPrecoCompra()."', '".$this->getIcmsCompra()."', '".$this->getPrecoVenda()."', '".$this->getQtdVendida()."', '".$this->getQtdOcorrencia()."', '".$this->getOcorrencia()."', )");
+        $dbConnection->getCon()->query("INSERT INTO estoque (idProduto, dtEntrada, quantidade, dtFabricacao, dtVencimento, nfCompra, precoCompra, icmsCompra, precoVenda, qtdVendida, qtdOcorrencia, ocorrencia)
+            VALUES ('".$this->getIdProduto()."', '".$this->getDtEntrada()."', '".$this->getQuantidade()."', '".$this->getDtFabricacao()."', '".$this->getDtVencimento()."', '".$this->getNfCompra()."', '".$this->getPrecoCompra()."', '".$this->getIcmsCompra()."', '".$this->getPrecoVenda()."', '".$this->getQtdVendida()."', '".$this->getQtdOcorrencia()."', '".$this->getOcorrencia()."')");
     }
     
-	public function getIdEstoque(){
-		return $this->idEstoque;
-	}
-
-	public function setIdEstoque($idEstoque){
-		$this->idEstoque = $idEstoque;
-	}
 
 	public function getIdProduto(){
 		return $this->idProduto;

@@ -1,7 +1,6 @@
 <?php
-include_once './classes/produtos.class.php';
+include_once '../classes/produtos.class.php';
 
-    $idProduto = $_POST['idProduto'];
     $fabricante = $_POST['fabricante'];
     $nome = $_POST['nome'];
     $marca = $_POST['marca'];
@@ -16,6 +15,7 @@ include_once './classes/produtos.class.php';
     $cor = $_POST['cor'];
     
     $produtos = new Produtos(
-        $idProduto, $fabricante, $nome, $marca, $modelo, $idCategoria, $descricao, $unidadeMedida, $largura, $altura, $profundidade, $peso, $cor
+        $fabricante, $nome, $marca, $modelo, $idCategoria, $descricao, $unidadeMedida, $largura, $altura, $profundidade, $peso, $cor
         );
+    $produtos->save();
 ?>

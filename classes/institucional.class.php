@@ -1,5 +1,5 @@
 <?php 
-include_once './classes/DBConnection.class.php';
+include_once '../classes/DBConnection.class.php';
 
 class Institucional {
     
@@ -31,8 +31,8 @@ class Institucional {
     }
 
     public function save(){
-        $dbConnection = new DBConnection();
-        $dbConnection->getConnection()->query("INSERT INTO usuario (nome, cpf_cnpj, tipoPessoa, endereco, bairro, cidade, uf, cep, telefone, email, logo)
+        $dbConnection = new DBConnection(); 
+        $dbConnection->getCon()->query("INSERT INTO institucional (nome, cpf_cnpj, tipoPessoa, endereco, bairro, cidade, uf, cep, telefone, email, logo)
             VALUES ('".$this->getNome()."', '".$this->getCpf_cnpj()."', '".$this->getTipoPessoa()."', '".$this->getEndereco()."', '".$this->getBairro()."', '".$this->getCidade()."', '".$this->getUf()."', '".$this->getCep()."', '".$this->getTelefone()."', '".$this->getEmail()."', '".$this->getLogo()."')");
     }
     

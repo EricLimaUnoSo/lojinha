@@ -1,9 +1,8 @@
 <?php 
-include_once './classes/DBConnection.class.php';
+include_once '../classes/DBConnection.class.php';
 
 class Usuarios {
     
-    private $idUsuario = '';
     private $email = '';
     private $senha = '';
     private $idNivelUsuario = '';
@@ -18,9 +17,8 @@ class Usuarios {
     private $foto = '';
     private $ativo = '';
     
-    function __construct($idUsuario, $email, $senha, $idNivelUsuario, $nome, $cpf, $endereco, $bairro, $cidade, $uf, $cep, $telefone, $foto, $ativo) {
+    function __construct($email, $senha, $idNivelUsuario, $nome, $cpf, $endereco, $bairro, $cidade, $uf, $cep, $telefone, $foto, $ativo) {
         
-        $this->setIdUsuario($idUsuario);
         $this->setEmail($email);
         $this->setSenha($senha);
         $this->setIdNivelUsuario($idNivelUsuario);
@@ -39,17 +37,10 @@ class Usuarios {
     
     public function save(){
         $dbConnection = new DBConnection();
-        $dbConnection->getConnection()->query("INSERT INTO usuario (email, senha, idNivelUsuario, nome, cpf, endereco, bairro, cidade, uf, cep, telefone, foto, ativo)
+        $dbConnection->getCon()->query("INSERT INTO usuarios (email, senha, idNivelUsuario, nome, cpf, endereco, bairro, cidade, uf, cep, telefone, foto, ativo)
             VALUES ('".$this->getEmail()."', '".$this->getSenha()."', '".$this->getIdNivelUsuario()."', '".$this->getNome()."', '".$this->getCpf()."', '".$this->getEndereco()."', '".$this->getBairro()."', '".$this->getCidade()."', '".$this->getUf()."', '".$this->getCep()."', '".$this->getTelefone()."', '".$this->getFoto()."', '".$this->getAtivo()."')");
     }
 
-	public function getIdUsuario(){
-		return $this->idUsuario;
-	}
-
-	public function setIdUsuario($idUsuario){
-		$this->idUsuario = $idUsuario;
-	}
 
 	public function getEmail(){
 		return $this->email;

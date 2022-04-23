@@ -1,5 +1,5 @@
 <?php 
-include_once './classes/DBConnection.class.php';
+include_once '../classes/DBConnection.class.php';
 
 class NivelUsuario {
     
@@ -12,8 +12,8 @@ class NivelUsuario {
 
     public function save(){
         $dbConnection = new DBConnection();
-        $dbConnection->getConnection()->query("INSERT INTO usuario (nivel)
-            VALUES ('".$this->getNivel()."')");
+        $dbConnection->getCon()->query("INSERT INTO nivelusuario (nivel)
+            VALUES (".$this->getNivel().")");
     }
     
 	public function getNivel(){
